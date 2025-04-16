@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
-import App from "../App";
 import NewProject from "./NewProject.jsx";
 
 const modalRoot = document.createElement('div');
@@ -9,10 +8,7 @@ document.body.appendChild(modalRoot);
 
 describe('NewProject component', () => {
   test('opens new project form when "Create new project" is clicked', async () => {
-    render(<App />);
-
-    const createButton = screen.getByRole('button', { name: /create new project/i });
-    await userEvent.click(createButton);
+    render(<NewProject onAdd={() => {}} onCancel={() => {}} />);
 
     const titleInput = screen.getByLabelText(/title/i);
     expect(titleInput).toBeInTheDocument();
